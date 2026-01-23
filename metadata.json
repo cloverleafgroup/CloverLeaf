@@ -1,0 +1,8 @@
+{
+  "name": "Copy of CloverLeaf Funeral Services 23/01/26",
+  "description": "A compassionate and professional platform for funeral arrangements, premium tombstones, and AI-powered memorial design services.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
