@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, isDarkMode, on
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {[
             { label: 'Home', page: Page.Home },
             { label: 'CloverLeaf Funeral Services', page: Page.Funerals },

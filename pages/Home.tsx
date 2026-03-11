@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Page } from '../types';
-import { SERVICES } from '../constants';
+import { SERVICES } from '../components/constants';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;
@@ -12,23 +11,23 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onStartLive }) => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative w-full h-[calc(100vh-80px)] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[calc(100vh-80px)] min-h-[600px] flex items-start justify-center overflow-hidden pt-24 md:pt-32">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 z-10"></div>
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105" 
-            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80")' }}
+            style={{ 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80")',
+              filter: 'brightness(1.15)'
+            }}
           ></div>
         </div>
         
         <div className="relative z-20 max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-1.5 px-4 mb-8">
-            <span className="material-symbols-outlined text-primary text-sm">spa</span>
-            <span className="text-white text-xs font-semibold uppercase tracking-wider">Compassionate Care & Lasting Tributes</span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black text-white leading-[1.1] mb-6 tracking-tight max-w-4xl drop-shadow-lg">
-            Another Leaf Has Fallen,<br/> Another Soul is Gone
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black leading-[1.1] mb-8 max-w-5xl select-none">
+            <span className="cloverleaf-hero-text">
+              CloverLeaf Group
+            </span>
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -81,7 +80,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onStartLive }) => {
                 className="group p-8 bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-white/5 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all mb-6">
-                  <span className="material-symbols-outlined text-3xl">{service.icon}</span>
+                  <span className="material-symbols-outlined text-3xl group-hover:animate-pulse-subtle">{service.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-3 dark:text-white">{service.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">

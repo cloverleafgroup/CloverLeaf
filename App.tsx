@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Funerals from './pages/Funerals';
 import Tombstones from './pages/Tombstones';
 import Contact from './pages/Contact';
+import MemorialAI from './pages/MemorialAI';
 import LiveSupport from './components/LiveSupport';
 import CloverParticles from './components/CloverParticles';
 
@@ -29,6 +30,7 @@ const App: React.FC = () => {
       case Page.Home: return <Home onNavigate={setCurrentPage} onStartLive={() => setShowLiveSupport(true)} />;
       case Page.Funerals: return <Funerals />;
       case Page.Tombstones: return <Tombstones onNavigate={setCurrentPage} />;
+      case Page.MemorialAI: return <MemorialAI />;
       case Page.Contact: return <Contact />;
       default: return <Home onNavigate={setCurrentPage} onStartLive={() => setShowLiveSupport(true)} />;
     }

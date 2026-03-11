@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ADVISORS } from '../constants';
+import { ADVISORS } from '../components/constants';
 
 const Contact: React.FC = () => {
   return (

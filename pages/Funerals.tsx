@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { SERVICES } from '../constants';
+import { SERVICES } from '../components/constants';
 
 const Funerals: React.FC = () => {
   const steps = [

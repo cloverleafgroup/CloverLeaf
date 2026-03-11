@@ -49,7 +49,8 @@ const MemorialAI: React.FC = () => {
       const img = await generateMemorialConcept(prompt, aspectRatio, imageSize, usePro);
       setResultImage(img);
     } catch (err: any) {
-      if (err.message.includes("Requested entity was not found")) {
+      // If requested entity not found, re-prompt for key as per guidelines.
+      if (err.message && err.message.includes("Requested entity was not found")) {
          await (window as any).aistudio.openSelectKey();
       } else {
          alert("Error generating image. Try selecting a different project/key.");
@@ -192,7 +193,8 @@ const MemorialAI: React.FC = () => {
                     onChange={(e) => setAspectRatio(e.target.value)}
                     className="w-full h-10 rounded-lg bg-background-light dark:bg-background-dark border-transparent text-sm dark:text-white"
                   >
-                    {['1:1', '3:2', '4:3', '16:9', '9:16', '3:4', '2:3'].map(r => <option key={r} value={r}>{r}</option>)}
+                    {/* Simplified supported aspect ratios as per guidelines */}
+                    {['1:1', '4:3', '3:4', '16:9', '9:16'].map(r => <option key={r} value={r}>{r}</option>)}
                   </select>
                 </div>
                 {usePro && (

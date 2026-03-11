@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +32,20 @@
                         "2xl": "1rem",
                         "full": "9999px"
                     },
+                    animation: {
+                        "pulse-subtle": "pulse-subtle 3s infinite ease-in-out",
+                        "reveal-item": "reveal-item 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+                    },
+                    keyframes: {
+                        "pulse-subtle": {
+                            "0%, 100%": { transform: "scale(1)" },
+                            "50%": { transform: "scale(1.08)" },
+                        },
+                        "reveal-item": {
+                            "0%": { opacity: "0", transform: "translateY(20px) scale(0.95)" },
+                            "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+                        }
+                    },
                 },
             },
         }
@@ -54,6 +67,47 @@
           animation: float var(--duration) linear infinite;
           animation-delay: var(--delay);
         }
+
+        /* Refined Soft 3D Glass Effect with Oyster Blue White and Gold Foil */
+        .cloverleaf-hero-text {
+            display: inline-block;
+            background: linear-gradient(
+                135deg, 
+                #eef6f9 0%,    /* Oyster Blue White hint */
+                #ffffff 25%, 
+                #f5f9fb 45%,   /* Core Oyster highlight */
+                #ffffff 55%, 
+                #d9e2e9 75%,   /* Soft Misty Blue */
+                #bdc9d4 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Extra padding-right to ensure 'p' in 'Group' is not clipped */
+            padding-right: 0.15em;
+            cursor: default;
+            
+            /* Soft 3D Depth + Subtle Gold Foil Edge */
+            filter: 
+                drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.5)) /* Pearl Highlight */
+                drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.15))     /* 3D Depth */
+                drop-shadow(0.4px 0.4px 0px rgba(212, 175, 55, 0.25)) /* Thin Gold Edge */
+                drop-shadow(-0.4px -0.4px 0px rgba(212, 175, 55, 0.25));
+            
+            -webkit-text-stroke: 0.1px rgba(212, 175, 55, 0.15);
+            position: relative;
+            transition: all 0.4s ease-out;
+        }
+
+        .dark .cloverleaf-hero-text {
+            filter: 
+                drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.1))
+                drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5))
+                drop-shadow(0.4px 0.4px 0px rgba(255, 223, 0, 0.15))
+                drop-shadow(-0.4px -0.4px 0px rgba(255, 223, 0, 0.15));
+            -webkit-text-stroke: 0.1px rgba(255, 223, 0, 0.1);
+        }
     </style>
 <script type="importmap">
 {
@@ -64,7 +118,8 @@
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "path": "https://esm.sh/path@^0.12.7",
     "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "url": "https://esm.sh/url@^0.11.4"
   }
 }
 </script>

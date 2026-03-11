@@ -1,8 +1,9 @@
 
 import { GoogleGenAI, Type, GenerateContentResponse, Modality } from "@google/genai";
 
-// Guideline: Create instance right before call for most up-to-date key
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Guideline: Create instance right before call for most up-to-date key.
+// The API key must be obtained exclusively from the environment variable process.env.API_KEY.
+const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
 export const analyzeMemorialImage = async (base64Image: string, prompt: string): Promise<string> => {
   const ai = getAI();
@@ -37,9 +38,11 @@ export const generateMemorialConcept = async (prompt: string, aspectRatio: strin
     }
   });
 
+  // Iterating through all parts to find the image part as per guidelines.
   for (const part of response.candidates[0].content.parts) {
     if (part.inlineData) {
-      return `data:image/png;base64,${part.inlineData.data}`;
+      const base64EncodeString: string = part.inlineData.data;
+      return `data:image/png;base64,${base64EncodeString}`;
     }
   }
   throw new Error("Failed to generate image.");

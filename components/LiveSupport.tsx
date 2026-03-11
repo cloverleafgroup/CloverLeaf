@@ -16,6 +16,7 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
   const nextStartTimeRef = useRef(0);
   const sourcesRef = useRef<Set<AudioBufferSourceNode>>(new Set());
 
+  // Manual base64 decoding implementation following Gemini API examples.
   const decodeBase64 = (base64: string) => {
     const binaryString = atob(base64);
     const bytes = new Uint8Array(binaryString.length);
@@ -25,6 +26,7 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
     return bytes;
   };
 
+  // Custom audio decoding for raw PCM streams returned by Gemini Live API.
   const decodeAudioData = async (data: Uint8Array, ctx: AudioContext) => {
     const dataInt16 = new Int16Array(data.buffer);
     const buffer = ctx.createBuffer(1, dataInt16.length, 24000);
@@ -35,6 +37,7 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
     return buffer;
   };
 
+  // Manual PCM encoding implementation for microphone streaming.
   const encodePCM = (data: Float32Array) => {
     const int16 = new Int16Array(data.length);
     for (let i = 0; i < data.length; i++) {
@@ -54,9 +57,10 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
 
     const startSession = async () => {
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-        audioContextInputRef.current = new AudioContext({ sampleRate: 16000 });
-        audioContextOutputRef.current = new AudioContext({ sampleRate: 24000 });
+        // Initialize Gemini API instance with key from process.env.API_KEY.
+        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+        audioContextInputRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
+        audioContextOutputRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
         
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         
@@ -71,6 +75,7 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
               scriptProcessor.onaudioprocess = (e) => {
                 const inputData = e.inputBuffer.getChannelData(0);
                 const base64 = encodePCM(inputData);
+                // Ensure data is sent only after the session promise resolves.
                 sessionPromise.then(s => s.sendRealtimeInput({
                   media: { data: base64, mimeType: 'audio/pcm;rate=16000' }
                 }));
@@ -82,6 +87,7 @@ const LiveSupport: React.FC<LiveSupportProps> = ({ onClose }) => {
               const audioBase64 = msg.serverContent?.modelTurn?.parts[0]?.inlineData?.data;
               if (audioBase64 && audioContextOutputRef.current) {
                 const ctx = audioContextOutputRef.current;
+                // Schedule next audio chunk for gapless playback using a running timestamp.
                 nextStartTimeRef.current = Math.max(nextStartTimeRef.current, ctx.currentTime);
                 const buffer = await decodeAudioData(decodeBase64(audioBase64), ctx);
                 const source = ctx.createBufferSource();

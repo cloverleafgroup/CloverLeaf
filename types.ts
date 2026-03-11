@@ -3,6 +3,7 @@ export enum Page {
   Home = 'home',
   Funerals = 'funerals',
   Tombstones = 'tombstones',
+  MemorialAI = 'memorial-ai',
   Contact = 'contact'
 }
 
