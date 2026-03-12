@@ -38,14 +38,14 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen relative">
-      <CloverParticles />
       <Navbar 
         currentPage={currentPage} 
         onNavigate={setCurrentPage} 
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(!isDarkMode)}
       />
-      <main className="flex-grow pt-20 relative z-10">
+      <main className="flex-grow pt-20 relative">
+        <CloverParticles />
         {renderPage()}
       </main>
       <Footer onNavigate={setCurrentPage} onStartLive={() => setShowLiveSupport(true)} />
