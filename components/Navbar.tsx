@@ -10,17 +10,19 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, isDarkMode, onToggleTheme }) => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-100 dark:border-white/10 transition-all h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-100 dark:border-white/10 transition-all h-24">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         {/* Logo */}
         <div 
           className="flex-shrink-0 flex items-center gap-3 cursor-pointer"
           onClick={() => onNavigate(Page.Home)}
         >
-          <div className="text-primary">
-            <span className="material-symbols-outlined text-4xl">eco</span>
-          </div>
-          <span className="font-display font-bold text-xl tracking-tight text-[#111811] dark:text-white">CloverLeaf Group</span>
+          <img 
+            src="https://res.cloudinary.com/ddvrmhcre/image/upload/v1773875485/Clover2_png_dskjqr.png" 
+            alt="CloverLeaf Group" 
+            className="h-20 w-auto object-contain transition-transform hover:scale-105"
+            referrerPolicy="no-referrer"
+          />
         </div>
 
         {/* Desktop Menu */}

@@ -11,30 +11,33 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onStartLive }) => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative w-full h-[calc(100vh-80px)] min-h-[600px] flex items-start justify-center overflow-hidden pt-24 md:pt-32">
+      <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 z-10"></div>
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105" 
             style={{ 
-              backgroundImage: 'url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80")',
+              backgroundImage: 'url("https://res.cloudinary.com/ddvrmhcre/image/upload/c_crop,g_north_west,h_624,w_1463,x_213/CloverLeaf%20Funeral/clover_cover_f44d9f.png")',
               filter: 'brightness(1.15)'
             }}
           ></div>
         </div>
         
         <div className="relative z-20 max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black leading-[1.1] mb-8 max-w-5xl select-none">
-            <span className="cloverleaf-hero-text">
-              CloverLeaf Group
-            </span>
-          </h1>
+          <div className="flex justify-center mb-4">
+            <img 
+              src="https://res.cloudinary.com/ddvrmhcre/image/upload/v1773875485/Clover2_png_dskjqr.png" 
+              alt="CloverLeaf Group" 
+              className="w-[500px] max-w-[85vw] h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+              referrerPolicy="no-referrer"
+            />
+          </div>
           
-          <p className="text-lg sm:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-6 leading-relaxed">
             Providing dignified funerals and lasting tombstones to honor your loved ones with the respect and peace they truly deserve.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <button 
               onClick={() => onNavigate(Page.Funerals)}
               className="group flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-bold h-14 px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(23,207,23,0.3)] transform hover:scale-105"

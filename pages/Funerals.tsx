@@ -34,7 +34,7 @@ const Funerals: React.FC = () => {
           <div className="flex-1 w-full">
             <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-2xl relative">
               <img 
-                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80" 
+                src="https://res.cloudinary.com/ddvrmhcre/image/upload/c_crop,g_north_west,h_624,w_1463,x_213/CloverLeaf%20Funeral/clover_cover_f44d9f.png" 
                 alt="Funeral Service"
                 className="w-full h-full object-cover"
               />

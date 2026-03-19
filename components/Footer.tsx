@@ -13,11 +13,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onStartLive }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="text-primary">
-                <span className="material-symbols-outlined text-3xl">spa</span>
-              </div>
-              <h3 className="text-xl font-bold tracking-tight text-text-main-light dark:text-white">CloverLeaf Group</h3>
+            <div className="flex items-center gap-2 mb-6">
+              <img 
+                src="https://res.cloudinary.com/ddvrmhcre/image/upload/v1773875485/Clover2_png_dskjqr.png" 
+                alt="CloverLeaf Group" 
+                className="h-20 w-auto object-contain brightness-110"
+                referrerPolicy="no-referrer"
+              />
             </div>
             {/* Typography Update: text-sm/base/lg adjusted for responsive scaling */}
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 text-[14px] md:text-[15px] lg:text-[16px]">

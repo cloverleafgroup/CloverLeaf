@@ -44,7 +44,7 @@ const App: React.FC = () => {
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(!isDarkMode)}
       />
-      <main className="flex-grow pt-20 relative">
+      <main className="flex-grow pt-24 relative">
         <CloverParticles />
         {renderPage()}
       </main>

@@ -29,7 +29,7 @@ const Tombstones: React.FC<TombstonesProps> = ({ onNavigate }) => {
       {/* Hero */}
       <section 
         className="h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-white text-center p-8"
-        style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80")' }}
+        style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://res.cloudinary.com/ddvrmhcre/image/upload/c_crop,g_north_west,h_624,w_1463,x_213/CloverLeaf%20Funeral/clover_cover_f44d9f.png")' }}
       >
         <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">Honouring Memories in Granite</h1>
         <p className="max-w-2xl text-lg opacity-90 mb-8">We provide high-quality granite memorials crafted with care to ensure a lasting tribute.</p>
